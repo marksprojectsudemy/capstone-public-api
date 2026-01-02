@@ -1,0 +1,35 @@
+<div class="card">
+	<div class="corner top left"></div>
+	<div class="corner top right"></div>
+	<div class="corner bottom left"></div>
+	<div class="corner bottom right"></div>
+	<h2>
+        <% if (locals.content.name) { %>
+            <%= locals.content.name %>
+        <% } %>
+    </h2>
+	<p>
+        <% if (locals.content.desc) { %>
+            <%= locals.content.desc %>
+        <% } %>
+    </p>
+
+	<button>
+		<span class="left"></span>
+		<span class="right"></span>
+        <% if (locals.pic) { %>
+            <img
+                src=<%= locals.pic %>
+                alt="spell-icon"
+                class="spell-icon">
+        <% } else if (locals.pics) { %>
+            <img
+                <% var rand = Math.floor(Math.random() * locals.pics.length) %>
+                src=<%= locals.pics[rand] %>
+                alt="spell-icon"
+                class="spell-icon">
+        <% } else { %>
+            <img src="images/blue (1).PNG" alt="spell-icon" class="spell-icon">
+        <% } %>
+	</button>
+</div>

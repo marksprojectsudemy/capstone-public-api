@@ -1,1 +1,29 @@
-<h1>spells</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/spells.css">
+    <title>Spells</title>
+</head>
+<body>
+    <div class="search-container">
+        <h1>Do you want to try your luck, Traveler?</h1>
+        <form action="/spells" method="POST">
+            <button type="submit" value="spellName" name="spellName">I'm feeling lucky</button>
+            <button type="submit" value="allSpells" name="allSpells">I want the POWER!</button>
+        </form>
+    </div>
+    <div class="spell-container">
+        <% if (locals.content) { %>
+            <% if (!locals.content.count) { %>
+                <%- include("partials/spell.ejs", { content: locals.content, pic: locals.pic }) %>
+            <% } else { %>
+                <% for (var i = 0; i < locals.content.results.length; i++) { %>
+                    <%- include("partials/spell.ejs", { content: locals.content.results[i], pics: locals.pics }) %>
+                <% } %>
+            <% } %>
+        <% } %>
+    </div>
+</body>
+</html>
